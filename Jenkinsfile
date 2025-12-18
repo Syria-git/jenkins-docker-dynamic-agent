@@ -22,7 +22,7 @@ pipeline {
             steps {
                 echo 'جاري نشر الموقع على سيرفر Apache...'
                 // نسخ الملفات مباشرة إلى مجلد الويب
-                sh 'cp index.html style.css converter.js jquery.min.js favicon.ico /var/www/html/'
+                sh 'cp index.html style.css converter.js jquery.min.js favicon.ico /var/www/html/convert/'
             }
         }
 	stage('Quality Check') {
