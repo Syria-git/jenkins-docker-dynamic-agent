@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'Building the dedicated agent image...'
                 // بناء الصورة من Dockerfile موجود في نفس مشروعك
-                sh "docker build -t ${AGENT_IMAGE} ."
+                sh "docker build --network=host -t ${AGENT_IMAGE} ."
             }
         }
 
