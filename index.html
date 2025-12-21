@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Convert2Arabic | Modern UI</title>
+    <title>Convert2Arabic | 🌟 فرنكو إلى عربي</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Cairo Font (Arabic + Latin support) -->
+    <!-- Cairo Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
@@ -16,111 +16,148 @@
     
     <style>
         body {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            /* Soft cyan gradient background */
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            /* Optional: add subtle pattern */
+            /* background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
             font-family: 'Cairo', sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             color: #fff;
+            padding: 1rem;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 2.5rem;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            max-width: 900px;
+            width: 100%;
         }
 
         h1 {
             font-weight: 700;
             letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
 
         textarea {
-            background: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            color: #fff !important;
-            border-radius: 12px !important;
-            font-size: 1.1rem !important;
-            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            color: #ffffff !important;
+            border-radius: 14px !important;
+            font-size: 1.15rem !important;
+            padding: 1rem !important;
+        }
+
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
         }
 
         textarea:focus {
-            background: rgba(255, 255, 255, 0.1) !important;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1) !important;
+            background: rgba(0, 0, 0, 0.15) !important;
+            border-color: #00e5ff !important;
+            box-shadow: 0 0 0 0.25rem rgba(0, 229, 255, 0.25) !important;
         }
 
         .btn-convert {
-            background: linear-gradient(to right, #ff4b2b, #ff416c);
+            background: linear-gradient(120deg, #00c6ff, #0072ff);
             border: none;
             color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
+            padding: 14px 32px;
+            border-radius: 50px;
             font-weight: bold;
-            transition: transform 0.2s;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 180, 255, 0.4);
+        }
+
+        .btn-convert:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 180, 255, 0.6);
         }
 
         .btn-clear {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.25s ease;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            color: #fff;
+        .btn-clear:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
         }
 
         .footer-text {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Ensure perfect vertical & horizontal centering */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .emoji {
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 glass-card">
-                <header class="text-center mb-5">
-                    <h1 class="display-4"><i class="fas fa-language me-2"></i>Convert2Arabic <i class="fas fa-magic ms-2"></i></h1>
-                    <p class="lead">Franco-Arabic To Arabic Converter</p>
-                    <p>حول نصوص بأحرف انجليزية إلى لغة عربية سليمة بضغطة زر</p>
-                </header>
+        <div class="glass-card">
+            <header class="text-center mb-4">
+                <h1 class="display-5">
+                    <i class="fas fa-language emoji"></i> 
+                    Convert2Arabic 🌍 ➡️ 📝
+                    <i class="fas fa-magic emoji"></i>
+                </h1>
+                <p class="lead mb-1">محوّل الفرانكو إلى العربية 🇸🇦🇪🇬🇹🇳</p>
+                <p class="text-muted">اكتب بالفرانكو... واحصل على نص عربي أنيق! ✨</p>
+            </header>
 
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <label class="form-label d-flex align-items-center gap-2">
-                            <i class="fas fa-font"></i> Franco (Latin)
-                        </label>
-                        <textarea id="text" class="form-control" rows="8" placeholder="Ahla sa7bi, 3andek chi khabar?"></textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label d-flex align-items-center gap-2">
-                            <i class="fas fa-comment-dots"></i> Arabic Result
-                        </label>
-                        <textarea id="text2" class="form-control" rows="8" dir="rtl" readonly placeholder="النتيجة ستظهر هنا..."></textarea>
-                    </div>
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <label class="form-label d-flex align-items-center gap-2">
+                        <i class="fas fa-keyboard"></i> 📤 النص بالفرانكو (لاتيني)
+                    </label>
+                    <textarea id="text" class="form-control" rows="8" placeholder="مرحبا! كيفك؟ عندي خبر حلو 😊&#10;3andek chi khabar? Ahla bik!"></textarea>
                 </div>
+                <div class="col-md-6">
+                    <label class="form-label d-flex align-items-center gap-2">
+                        <i class="fas fa-comment-dots"></i> 📥 النتيجة بالعربية
+                    </label>
+                    <textarea id="text2" class="form-control" rows="8" dir="rtl" readonly placeholder="النتيجة ستظهر هنا تلقائيًا... 🌟"></textarea>
+                </div>
+            </div>
 
-                <div class="row mt-4 align-items-center">
-                    <div class="col-md-6 d-flex gap-2">
-                        <button id="submit" class="btn btn-convert shadow-sm w-100">
-                            <i class="fas fa-arrow-right-to-bracket me-2"></i> Convert
-                        </button>
-                        <button id="clear" class="btn btn-clear w-100">
-                            <i class="fas fa-broom me-2"></i> Clear
-                        </button>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-                        <p class="footer-text mb-0">
-                            Made with <i class="fas fa-heart text-danger"></i> by <strong>Adem Kouki</strong>
-                        </p>
-                    </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
+                <div class="d-flex gap-2 w-100">
+                    <button id="submit" class="btn btn-convert flex-fill">
+                        <i class="fas fa-arrow-right-to-bracket me-2"></i> حوّل الآن! 🚀
+                    </button>
+                    <button id="clear" class="btn btn-clear flex-fill">
+                        <i class="fas fa-broom me-2"></i> مسح الكل 🧹
+                    </button>
+                </div>
+                <div class="text-center text-md-end align-self-center">
+                    <p class="footer-text mb-0">
+                        💌 مصنوع بحب بواسطة <strong>Adem Kouki</strong> ❤️
+                    </p>
                 </div>
             </div>
         </div>
@@ -134,13 +171,20 @@
             $("#submit").click(function () {
                 var text = $("#text").val();
                 var result = convert2Arabic(text);
-                $("#text2").val(result);
+                $("#text2").val(result || "🔍 لم يتم إدخال نص!");
             });
 
             $("#clear").click(function () {
                 $("#text").val('');
                 $("#text2").val('');
             });
+
+            // Optional: auto-convert on typing (uncomment if desired)
+            // $("#text").on('input', function() {
+            //     var text = $(this).val();
+            //     var result = convert2Arabic(text);
+            //     $("#text2").val(result || '');
+            // });
         });
     </script>
 </body>
