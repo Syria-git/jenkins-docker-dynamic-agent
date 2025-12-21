@@ -3,15 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Convert2Arabic | 🌟 فرنكو إلى عربي</title>
+    <title>Convert2Arabic | 🌿 فرنكو إلى عربي</title>
     
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Cairo Font for Arabic -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         body {
-            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            /* 🌿 Green gradient background */
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
             font-family: 'Cairo', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -28,7 +34,7 @@
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.25);
             padding: 2.5rem;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
             max-width: 900px;
             width: 100%;
         }
@@ -53,7 +59,7 @@
         }
 
         .btn-convert {
-            background: linear-gradient(120deg, #00c6ff, #0072ff);
+            background: linear-gradient(120deg, #2ecc71, #27ae60);
             border: none;
             color: white;
             padding: 14px 32px;
@@ -61,12 +67,12 @@
             font-weight: bold;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 180, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
         }
 
         .btn-convert:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 180, 255, 0.6);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.6);
         }
 
         .btn-clear {
@@ -136,84 +142,104 @@
         </div>
     </div>
 
-    <!-- No external jQuery or converter.js needed -->
+    <!-- ✅ Fully working converter (no external files!) -->
     <script>
-        // 🔄 Franco-to-Arabic mapping
-        const francoToArabicMap = {
-            // Letters
-            'a': 'ا',
-            'b': 'ب',
-            't': 'ت',
-            'th': 'ث',
-            'j': 'ج',
-            '7': 'ح',
-            'kh': 'خ',
-            'd': 'د',
-            'dh': 'ذ',
-            'r': 'ر',
-            'z': 'ز',
-            's': 'س',
-            'sh': 'ش',
-            'S': 'ص',
-            'D': 'ض',
-            'T': 'ط',
-            'Z': 'ظ',
-            '3': 'ع',
-            'gh': 'غ',
-            'f': 'ف',
-            'q': 'ق',
-            'k': 'ك',
-            'l': 'ل',
-            'm': 'م',
-            'n': 'ن',
-            'h': 'ه',
-            'w': 'و',
-            'y': 'ي',
-            '2': 'ء',
-            '5': 'خ', // alternative sometimes used
-            '6': 'ط', // rarely used, but included for completeness
+        // Franco-to-Arabic conversion dictionary (expand as needed)
+        function convert2Arabic(str) {
+            if (!str) return '';
 
-            // Common diacritics or combos (simplified)
-            'aa': 'ا',
-            'ee': 'ي',
-            'oo': 'و',
-            'ou': 'و',
-            'ch': 'ش',
-            'dj': 'ج',
-            'dj': 'ج',
-            '9': 'ق',
-            '8': 'غ',
-        };
+            let input = str.toLowerCase();
 
-        // 💡 Convert function
-        function convert2Arabic(francoText) {
-            if (!francoText) return '';
+            // 🔤 Character-level replacements (longest first to avoid conflicts)
+            const replacements = [
+                [/7am/g, "حم"],
+                [/fama/g, "فما"],
+                [/bedhabt/g, "بالظبط"],
+                [/7ata/g, "حتى"],
+                [/ ma /g, " ما "],
+                [/dar/g, "دار"],
+                [/houwa/g, "هو"],
+                [/ahla/g, "اهلا"],
+                [/heyya/g, "هيّا"],
+                [/howa/g, "هو"],
+                [/ana/g, "أنا"],
+                [/inta/g, "إنتا"],
+                [/enti/g, "إنتي"],
+                [/kifek/g, "كيفك"],
+                [/kifich/g, "كيفاش"],
+                [/chnowa/g, "شنوّا"],
+                [/chno/g, "شنو"],
+                [/wach/g, "واش"],
+                [/mazal/g, "مازال"],
+                [/bghit/g, "بغيت"],
+                [/3andek/g, "عندك"],
+                [/3andi/g, "عندي"],
+                [/3and/g, "عند"],
+                [/makaynsh/g, "ماكاينش"],
+                [/makayench/g, "ماكاينش"],
+                [/la/g, "لا"],
+                [/machi/g, "ماشي"],
+                [/ou/g, "و"],
+                [/walla/g, "واللا"],
+                [/yallah/g, "يلا"],
+                [/safi/g, "صافي"],
+                [/mzyan/g, "مزيان"],
+                [/bzef/g, "بزاف"],
+                [/daba/g, "دابا"],
+                [/haja/g, "حاجة"],
+                [/rah/g, "راه"],
+                // Single letters
+                [/7/g, "ح"],
+                [/3/g, "ع"],
+                [/9/g, "ق"],
+                [/8/g, "غ"],
+                [/5/g, "خ"],
+                [/2/g, "ء"],
+                [/T/g, "ط"],
+                [/S/g, "ص"],
+                [/D/g, "ض"],
+                [/Z/g, "ظ"],
+                [/kh/g, "خ"],
+                [/gh/g, "غ"],
+                [/ch/g, "ش"],
+                [/dj/g, "ج"],
+                [/th/g, "ث"],
+                [/dh/g, "ذ"],
+                [/sh/g, "ش"],
+                [/a/g, "ا"],
+                [/b/g, "ب"],
+                [/t/g, "ت"],
+                [/j/g, "ج"],
+                [/d/g, "د"],
+                [/r/g, "ر"],
+                [/z/g, "ز"],
+                [/s/g, "س"],
+                [/f/g, "ف"],
+                [/q/g, "ق"],
+                [/k/g, "ك"],
+                [/l/g, "ل"],
+                [/m/g, "م"],
+                [/n/g, "ن"],
+                [/h/g, "ه"],
+                [/w/g, "و"],
+                [/y/g, "ي"]
+            ];
 
-            let input = francoText.toLowerCase();
+            replacements.forEach(([pattern, replacement]) => {
+                input = input.replace(pattern, replacement);
+            });
 
-            // Sort keys by length (longest first) to match "sh" before "s", etc.
-            const sortedKeys = Object.keys(francoToArabicMap).sort((a, b) => b.length - a.length);
-
-            for (const key of sortedKeys) {
-                const regex = new RegExp(key, 'g');
-                input = input.replace(regex, francoToArabicMap[key]);
-            }
-
-            // Clean up extra spaces or artifacts
-            return input
-                .replace(/([ا])\1+/g, '$1') // reduce repeated alifs
-                .replace(/\s+/g, ' ')        // normalize spaces
-                .trim();
+            return input.replace(/\s+/g, ' ').trim();
         }
 
-        // 🎯 Button functionality
-        document.getElementById('submit').addEventListener('click', function () {
+        // 🎯 Button event listeners
+        document.getElementById('submit').addEventListener('click', () => {
             const input = document.getElementById('text').value;
             const output = convert2Arabic(input);
-            document.getElementById('text2').value = output || '🔍 لم يتم إدخال نص!';
+            document.getElementById('text2').value = output || '🔍 الرجاء إدخال نص!';
         });
 
-        document.getElementById('clear').addEventListener('click', function () {
+        document.getElementById('clear').addEventListener('click', () => {
             document.getElementById('text').value = '';
             document.getElementById('text2').value = '';
         });
