@@ -23,3 +23,16 @@ To showcase DevOps fundamentals including:
 4. All resources are cleaned up after execution
 
 ## Repository Structure
+
+Git → Jenkins → Docker Agent → Deploy → Cleanup
+
+
+## Local Usage (Optional)
+
+For demonstration purposes, a Makefile is provided to standardize
+common commands:
+
+```bash
+make build
+make deploy
+make clean
