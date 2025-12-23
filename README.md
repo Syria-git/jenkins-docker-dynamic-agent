@@ -1,3 +1,5 @@
+# DevOps CI/CD Portfolio – Jenkins Pipeline with Docker Dynamic Agent
+
 🎯 Project Goal
 
 This project showcases core DevOps fundamentals through a practical, production-style setup, including:
