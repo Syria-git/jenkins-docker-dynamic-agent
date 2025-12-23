@@ -1,57 +1,89 @@
-# Convert2Arabic – DevOps CI/CD Portfolio Project
+🎯 Project Goal
 
-This repository demonstrates a complete CI/CD pipeline using Jenkins and Docker
-with a dynamically created build agent and a simple static web application.
+This project showcases core DevOps fundamentals through a practical, production-style setup, including:
 
-## Project Goal
-To showcase DevOps fundamentals including:
-- CI/CD automation
-- Dynamic infrastructure
-- Secure configuration handling
-- Clean repository structure
+CI/CD automation using Jenkins
 
-## Tech Stack
-- Jenkins (Declarative Pipeline)
-- Docker (Dynamic Build Agent)
-- Ubuntu 22.04
-- HTML / CSS / JavaScript
+Dynamic infrastructure with Docker build agents
 
-## CI/CD Workflow
-1. Jenkins builds a custom Docker image used as a temporary agent
-2. A container is started dynamically per build
-3. Application files are deployed to the web directory
-4. All resources are cleaned up after execution
+Secure handling of environment-specific configuration
 
-## Repository Structure
+Clean, scalable repository structure suitable for public portfolios
 
+🧰 Tech Stack
+
+Jenkins – Declarative Pipeline
+
+Docker – Dynamic build agent
+
+Ubuntu 22.04 – Base operating system
+
+HTML / CSS / JavaScript – Sample web application
+
+🔁 CI/CD Workflow
+
+Jenkins builds a custom Docker image to be used as a temporary build agent
+
+A container is started dynamically per pipeline execution
+
+Application files are deployed into the web directory
+
+All containers and temporary resources are cleaned up automatically after execution
+
+This approach demonstrates ephemeral infrastructure and clean pipeline design.
+
+🗂️ Repository Structure
 Git → Jenkins → Docker Agent → Deploy → Cleanup
 
 
-## Local Usage (Optional)
+The repository follows a clear separation of concerns between:
 
-For demonstration purposes, a Makefile is provided to standardize
-common commands:
+Application code
 
-```bash
+CI/CD configuration
+
+Infrastructure logic
+
+🧪 Local Usage (Optional)
+
+For local testing and demonstration purposes, a Makefile is provided to standardize common commands:
+
 make build
 make deploy
 make clean
-```
 
-## Proxy Configuration (Enterprise Best Practice)
+
+This allows consistent execution locally and mirrors CI behavior where applicable.
+
+🔐 Proxy Configuration (Enterprise Best Practice)
 
 Important Note
+
 This project is designed to be safe for public GitHub repositories.
-In environments with restricted network access, proxy settings are NOT hardcoded in the Dockerfile or repository.
+
+In environments with restricted network access, proxy settings are intentionally not hardcoded in the Dockerfile or committed to the repository.
 
 ✅ Recommended Approach
+
 Proxy values are configured directly in Jenkins:
+
 Path:
+
 Job → Configure → Environment variables
+
+
 Example variables:
+
 HTTP_PROXY
+
 HTTPS_PROXY
+
 These variables are:
+
 Injected at runtime
+
 Managed outside the codebase
-Excluded from version control for security reasons
+
+Excluded from version control to maintain security and portability
+
+This mirrors how proxy and secret management is handled in real enterprise environments
