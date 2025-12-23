@@ -36,8 +36,9 @@ common commands:
 make build
 make deploy
 make clean
+bash```
 
-##  Proxy Configuration (Enterprise Best Practice)
+## Proxy Configuration (Enterprise Best Practice)
 
 Important Note
 This project is designed to be safe for public GitHub repositories.
