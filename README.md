@@ -36,3 +36,21 @@ common commands:
 make build
 make deploy
 make clean
+
+##  Proxy Configuration (Enterprise Best Practice)
+
+Important Note
+This project is designed to be safe for public GitHub repositories.
+In environments with restricted network access, proxy settings are NOT hardcoded in the Dockerfile or repository.
+
+✅ Recommended Approach
+Proxy values are configured directly in Jenkins:
+Path:
+Job → Configure → Environment variables
+Example variables:
+HTTP_PROXY
+HTTPS_PROXY
+These variables are:
+Injected at runtime
+Managed outside the codebase
+Excluded from version control for security reasons
