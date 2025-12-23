@@ -36,7 +36,7 @@ common commands:
 make build
 make deploy
 make clean
-bash```
+
 
 ## Proxy Configuration (Enterprise Best Practice)
 
