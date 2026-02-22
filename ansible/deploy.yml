@@ -1,0 +1,28 @@
+- hosts: web
+  become: yes
+  vars:
+    image_name: ghcr.io/syria-git/convert2arabic:1.0
+    container_name: convert2arabic
+
+  tasks:
+
+    - name: Login to GHCR
+      community.docker.docker_login:
+        registry_url: ghcr.io
+        username: Syria-git
+        password: "{{ ghcr_token }}"
+
+    - name: Pull image
+      community.docker.docker_image:
+        name: "{{ image_name }}"
+        source: pull
+
+    - name: Run container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        state: started
+        recreate: yes
+        restart_policy: always
+        ports:
+          - "80:80"
