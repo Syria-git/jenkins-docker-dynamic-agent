@@ -21,17 +21,6 @@ pipeline {
             }
         }
 
-stage('Push Image') {
-    steps {
-        withCredentials([string(credentialsId: 'GHCR_TOKEN', variable: 'GHCR_TOKEN')]) {
-            sh """
-                docker tag ${AGENT_IMAGE} ghcr.io/syria-git/convert2arabic:${env.BUILD_NUMBER}
-                echo \$GHCR_TOKEN | docker login ghcr.io -u Syria-git --password-stdin
-                docker push ghcr.io/syria-git/convert2arabic:${env.BUILD_NUMBER}
-            """
-        }
-    }
- }
         stage('Run Dynamic Agent') {
             steps {
                 echo 'Starting dynamic agent container...'
